@@ -1,0 +1,56 @@
+<mat-table color="primary"  [dataSource]="parkingSpots" >
+  <ng-container matColumnDef="licensePlate">
+    <mat-header-cell  *matHeaderCellDef> Placa do Veiculo </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsSpot"> {{parkingsSpot.licensePlate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="carEntryDate">
+    <mat-header-cell  *matHeaderCellDef> Data da Entrada </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsSpot"> {{parkingsSpot.carEntryDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="carEntryTime">
+    <mat-header-cell  *matHeaderCellDef> Hora da Entrada </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsSpot"> {{parkingsSpot.carEntryTime}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="carLeaveDate">
+    <mat-header-cell  *matHeaderCellDef> Data da Saída </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsSpot"> {{parkingsSpot.carLeaveDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="carLeaveTime">
+    <mat-header-cell  *matHeaderCellDef> Hora da Saída </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsSpot"> {{parkingsSpot.carLeaveTime}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="parkingSpotStatus">
+    <mat-header-cell  *matHeaderCellDef> Status da Vaga </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsSpot"> {{parkingsSpot.parkingSpotStatus}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="priceOfParking">
+    <mat-header-cell  *matHeaderCellDef> Valor Pago </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsSpot"> {{parkingsSpot.priceOfParking | currency:'BRL':true }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="timeOfParking">
+    <mat-header-cell  *matHeaderCellDef> Tempo de Estadia </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsSpot"> {{parkingsSpot.timeOfParking}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions" >
+    <mat-header-cell *matHeaderCellDef class="action-colunm-header">
+       Acao
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let parkingsSpot" class="action-colunm" >
+      <button mat-button color="primary" aria-label="Finalizar" (click)="onFinish(parkingsSpot)">
+        finalizar
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
