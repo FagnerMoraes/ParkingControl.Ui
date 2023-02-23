@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ParkingSpotService } from '../../services/parking-spot.service';
@@ -13,7 +13,10 @@ import { ParkingSpotService } from '../../services/parking-spot.service';
 export class ParkingSpotFormComponent implements OnInit {
 
   form = this.formBuilder.group({
-    licensePlate: ['']
+    licensePlate: ['',[ Validators.required,
+                        Validators.minLength(7),
+                        Validators.maxLength(8),
+                        Validators.pattern('[a-zA-Z0-9]*')]]
   }
   );
 
@@ -51,4 +54,24 @@ export class ParkingSpotFormComponent implements OnInit {
     });
   }
 
+  public getErrorMessage(licensePlate: string){
+    const field = this.form.get(licensePlate);
+
+    if(field?.hasError('required')){
+      return 'Campo obrigatorio';
+    }
+
+    if(field?.hasError('pattern')){
+      return 'O Campo só pode possuir letras e numeros';
+    }
+    if(field?.hasError('minlength')){
+      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
+      return `Tamanho minimo precisa ser de ${requiredLength} caracteres`;
+    }
+    if(field?.hasError('maxlength')){
+      const requiredLength = field.errors ? field.errors['maxlength']['requiredLength'] : 100;
+      return `Tamanho máximo precisa ser de ${requiredLength} caracteres`;
+    }
+    return 'Campo inválido';
+  }
 }
