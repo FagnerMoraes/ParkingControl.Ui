@@ -45,7 +45,9 @@
     </mat-header-cell>
 
     <mat-cell *matCellDef="let parkingsSpot" class="action-colunm" >
-      <button mat-button color="primary" aria-label="Finalizar" (click)="onFinish(parkingsSpot)">
+      <button mat-button color="warn" aria-label="Finalizar" (click)="onFinish(parkingsSpot)"
+      [disabled]="parkingsSpot.parkingSpotStatus === 'finished'"
+      >
         finalizar
       </button>
     </mat-cell>

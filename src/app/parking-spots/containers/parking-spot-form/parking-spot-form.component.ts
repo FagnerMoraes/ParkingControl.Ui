@@ -36,11 +36,19 @@ export class ParkingSpotFormComponent implements OnInit {
   }
 
   private onSuccess(){
-    this.snackBar.open('Sucesso ao estacionar','',{duration:2000});
+    this.snackBar.open('Sucesso ao estacionar','',{
+      duration:5000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
     this.onCancel();
   }
   private onError(){
-    this.snackBar.open('Erro ao tentar salvar','',{duration:2000});
+    this.snackBar.open('Erro ao tentar salvar','',{
+      duration:5000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center'
+    });
   }
 
 }

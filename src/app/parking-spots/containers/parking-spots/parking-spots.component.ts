@@ -35,7 +35,7 @@ export class ParkingSpotsComponent implements OnInit {
 
   onFinish(parkingSpot: ParkingSpotRequest){
     this.parkingSpotService.finish(parkingSpot.licensePlate).subscribe(() =>{
-      this.snackBar.open('Estadia Finalizada','',{duration:2000,
+      this.snackBar.open('Estadia Finalizada','',{duration:5000,
       verticalPosition: 'top',
     horizontalPosition: 'center'
   });
