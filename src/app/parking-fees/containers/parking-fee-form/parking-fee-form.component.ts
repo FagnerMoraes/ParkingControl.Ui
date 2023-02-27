@@ -3,28 +3,28 @@ import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { ParkingSpotService } from '../../services/parking-spot.service';
+import { ParkingFeeService } from '../../services/parking-fee.service';
+
 
 @Component({
-  selector: 'app-parking-spot-form',
-  templateUrl: './parking-spot-form.component.html',
-  styleUrls: ['./parking-spot-form.component.scss']
+  selector: 'app-parking-fee-form',
+  templateUrl: './parking-fee-form.component.html',
+  styleUrls: ['./parking-fee-form.component.scss']
 })
-export class ParkingSpotFormComponent implements OnInit {
+export class ParkingFeeFormComponent implements OnInit {
 
   form = this.formBuilder.group({
-    licensePlate: ['',[ Validators.required,
-                        Validators.minLength(7),
-                        Validators.maxLength(8),
-                        Validators.pattern('[a-zA-Z0-9-]*')]]
+    initialValidityDate: ['',Validators.required],
+    finalValidityDate: ['',Validators.required],
+    fullHourPrice: [0, Validators.required],
+    aditionalHourPrice: [0, Validators.required]
   }
   );
 
   constructor(private formBuilder: NonNullableFormBuilder,
-              private snackBar: MatSnackBar,
-              private location: Location,
-              private service: ParkingSpotService) {
-   }
+    private snackBar: MatSnackBar,
+    private location: Location,
+    private service: ParkingFeeService) { }
 
   ngOnInit(): void {
   }
@@ -39,7 +39,7 @@ export class ParkingSpotFormComponent implements OnInit {
   }
 
   private onSuccess(){
-    this.snackBar.open('Sucesso ao estacionar','',{
+    this.snackBar.open('Sucesso ao salvar taxa','',{
       duration:5000,
       verticalPosition: 'top',
       horizontalPosition: 'center'
@@ -74,4 +74,5 @@ export class ParkingSpotFormComponent implements OnInit {
     }
     return 'Campo inválido';
   }
+
 }

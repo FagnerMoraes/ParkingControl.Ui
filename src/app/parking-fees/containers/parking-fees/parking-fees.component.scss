@@ -1,0 +1,29 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-button {
+  padding: 0 14px;
+}
+
+
+mat-card{
+  width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.colunm-flex{
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+
+.loading-spinner{
+  padding: 25px;
+  background: rgb(0, 0, 0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

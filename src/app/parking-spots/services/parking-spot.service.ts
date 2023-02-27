@@ -13,6 +13,7 @@ export class ParkingSpotService {
 
   private controller = "ParkingSpot";
   private readonly API = `${environment.apiUrl}/${this.controller}` ;
+
   constructor(private httpClient: HttpClient) { }
 
   list() {

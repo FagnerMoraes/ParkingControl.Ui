@@ -6,7 +6,14 @@ const routes: Routes = [
   {
     path: 'parking-spot',
     loadChildren: () => import('./parking-spots/parking-spots.module').then(m => m.ParkingSpotsModule)
+
+  },
+  {
+    path: 'parking-fee',
+    loadChildren: () => import('./parking-fees/parking-fees.module').then(m => m.ParkingFeesModule)
   }
+
+
 ];
 
 @NgModule({

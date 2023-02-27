@@ -1,4 +1,15 @@
 <mat-toolbar color="primary">
-  <span>Estacionamento</span>
+  <span>{{title}}</span>
+  <span class="spacer"></span>
+  <mat-menu #appMenu="matMenu">
+    <ng-template matMenuContent>
+      <a mat-menu-item routerLink="/parking-spot" routerLinkActive="active-link">Controle de Veiculos</a>
+      <a mat-menu-item routerLink="/parking-fee" routerLinkActive="active-link">Cotrole de Taxa</a>
+    </ng-template>
+  </mat-menu>
+  <nav>
+    <button mat-raised-button [matMenuTriggerFor]="appMenu">Menu</button>
+  </nav>
 </mat-toolbar>
 <router-outlet></router-outlet>
+)

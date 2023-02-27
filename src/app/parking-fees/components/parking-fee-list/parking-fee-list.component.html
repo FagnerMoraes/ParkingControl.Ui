@@ -1,0 +1,25 @@
+<mat-table color="primary"  [dataSource]="parkingFees" >
+  <ng-container matColumnDef="initialValidityDate">
+    <mat-header-cell  *matHeaderCellDef> Data Inicial Vigencia </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsFee"> {{parkingsFee.initialValidityDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="finalValidityDate">
+    <mat-header-cell  *matHeaderCellDef> Data final Vigencia </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsFee"> {{parkingsFee.finalValidityDate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="fullHourPrice">
+    <mat-header-cell  *matHeaderCellDef> Valor Periodo </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsFee"> {{parkingsFee.fullHourPrice | currency:'BRL':true}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="aditionalHourPrice">
+    <mat-header-cell  *matHeaderCellDef> Valor Meio Periodo </mat-header-cell>
+    <mat-cell  *matCellDef="let parkingsFee"> {{parkingsFee.aditionalHourPrice | currency:'BRL':true}} </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

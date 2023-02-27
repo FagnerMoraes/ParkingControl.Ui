@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-toolbar color="primary">Dados para entrada</mat-toolbar>
+  <mat-card-content>
+    <form [formGroup]="form" class="example-form" >
+
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" formControlName="initialValidityDate">
+              <input matEndDate placeholder="End date" formControlName="finalValidityDate">
+            </mat-date-range-input>
+            <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+      </td>
+        <td>
+          <mat-form-field >
+            <input  matInput placeholder="Valor da hora" #fullHourPrice  formControlName="fullHourPrice">
+            <mat-error *ngIf="form.get('fullHourPrice')?.invalid">{{getErrorMessage('fullHourPrice')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field >
+            <input  matInput placeholder="Valor hora adicional" #aditionalHourPrice formControlName="aditionalHourPrice">
+            <mat-error *ngIf="form.get('aditionalHourPrice')?.invalid">{{getErrorMessage('aditionalHourPrice')}}</mat-error>
+          </mat-form-field>
+      </td>
+      </tr>
+    </table>
+
+
+
+
+
+
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="full-button">
+    <button mat-raised-button color="primary" (click)="onSubmit()">SALVAR</button>
+    <button mat-raised-button  (click)="onCancel()" >CANCELAR</button>
+  </mat-card-actions>
+
+</mat-card>

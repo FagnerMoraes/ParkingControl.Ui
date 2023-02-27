@@ -1,10 +1,11 @@
-import { ParkingSpotRequest } from './../../models/parking-spot-request';
-import { ParkingSpotService } from '../../services/parking-spot.service';
-import { ParkingSpotResponse } from '../../models/parking-spot-response';
 import { Component, OnInit } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { ParkingSpotResponse } from '../../models/parking-spot-response';
+import { ParkingSpotService } from '../../services/parking-spot.service';
+import { ParkingSpotRequest } from './../../models/parking-spot-request';
 
 @Component({
   selector: 'app-parking-spots',
