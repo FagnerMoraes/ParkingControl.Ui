@@ -23,6 +23,9 @@ export class ParkingSpotService {
     );
   }
 
+
+
+
   save(record: Partial<ParkingSpotRequest>){
     return  this.httpClient.post<ParkingSpotResponse>(`${this.API}/iniciar-estadia`,record).pipe(first());
   }

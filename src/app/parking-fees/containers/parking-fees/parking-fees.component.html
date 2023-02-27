@@ -10,6 +10,7 @@
   <div class=" olunm-flex mat-elevation-z8">
     <app-parking-fee-list *ngIf="parkingFees$ | async as parkingFees; else loading"
       [parkingFees]="parkingFees"
+      (edit)="onEdit($event)"
     >
 
     </app-parking-fee-list>

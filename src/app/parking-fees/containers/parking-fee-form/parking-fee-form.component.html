@@ -8,8 +8,10 @@
           <mat-form-field appearance="fill">
             <mat-label>Enter a date range</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate placeholder="Start date" formControlName="initialValidityDate">
-              <input matEndDate placeholder="End date" formControlName="finalValidityDate">
+              <input matStartDate placeholder="Start date" #initialValidityDate formControlName="initialValidityDate">
+              <mat-error *ngIf="form.get('initialValidityDate')?.invalid">{{getErrorMessageinitialValidityDate('initialValidityDate')}}</mat-error>
+              <input matEndDate placeholder="End date" #finalValidityDate formControlName="finalValidityDate">
+              <mat-error *ngIf="form.get('finalValidityDate')?.invalid">{{getErrorMessagefinalValidityDate('finalValidityDate')}}</mat-error>
             </mat-date-range-input>
             <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -19,11 +21,11 @@
         <td>
           <mat-form-field >
             <input  matInput placeholder="Valor da hora" #fullHourPrice  formControlName="fullHourPrice">
-            <mat-error *ngIf="form.get('fullHourPrice')?.invalid">{{getErrorMessage('fullHourPrice')}}</mat-error>
+            <mat-error *ngIf="form.get('fullHourPrice')?.invalid">{{getErrorMessageFullHourPrice('fullHourPrice')}}</mat-error>
           </mat-form-field>
           <mat-form-field >
             <input  matInput placeholder="Valor hora adicional" #aditionalHourPrice formControlName="aditionalHourPrice">
-            <mat-error *ngIf="form.get('aditionalHourPrice')?.invalid">{{getErrorMessage('aditionalHourPrice')}}</mat-error>
+            <mat-error *ngIf="form.get('aditionalHourPrice')?.invalid">{{getErrorMessageAdtionalHourPrice('aditionalHourPrice')}}</mat-error>
           </mat-form-field>
       </td>
       </tr>

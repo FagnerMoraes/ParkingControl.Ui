@@ -21,6 +21,10 @@ list(){
     first()
   );
 }
+GetById(id:string){
+  console.log(id);
+  return this.httpClient.get<ParkingFeeRequest>(`${this.API}/${id}`);
+}
 
 save(record: Partial<ParkingFeeRequest>){
   return  this.httpClient.post<ParkingFeeResponse>(this.API,record).pipe(first());

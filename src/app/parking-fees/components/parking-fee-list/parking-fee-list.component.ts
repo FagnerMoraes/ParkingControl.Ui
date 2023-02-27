@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ParkingFeeRequest } from '../../models/parking-fee-request';
 
 import { ParkingFeeResponse } from './../../models/parking-fee-response';
 
@@ -10,18 +11,29 @@ import { ParkingFeeResponse } from './../../models/parking-fee-response';
 export class ParkingFeeListComponent implements OnInit {
 
   @Input() parkingFees: ParkingFeeResponse[] = [];
+  @Output() edit = new EventEmitter(false);
+
 
   readonly displayedColumns: string[] =[
     'initialValidityDate',
     'finalValidityDate',
     'fullHourPrice',
-    'aditionalHourPrice'
+    'aditionalHourPrice',
+    'actions'
   ];
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.parkingFees)
+  }
+
+  onEdit(updateParkingFeeResquest: ParkingFeeRequest) {
+      const parkingFeeEdited = updateParkingFeeResquest;
+      //parkingFeeEdited.initialValidityDate = new Date(updateParkingFeeResquest.initialValidityDate.concat("00:00")).toString();
+      console.log(updateParkingFeeResquest);
+      console.log(parkingFeeEdited);
+
+    this.edit.emit(updateParkingFeeResquest);
   }
 
 }

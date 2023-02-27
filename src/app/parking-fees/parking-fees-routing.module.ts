@@ -6,7 +6,8 @@ import { ParkingFeesComponent } from './containers/parking-fees/parking-fees.com
 
 const routes: Routes = [
   {path: '', component: ParkingFeesComponent},
-  {path: 'new', component: ParkingFeeFormComponent}
+  {path: 'new', component: ParkingFeeFormComponent},
+  {path: 'edit/:id', component: ParkingFeeFormComponent}
 ];
 
 @NgModule({

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { ParkingFeeResponse } from './../../models/parking-fee-response';
 import { ParkingFeeService } from './../../services/parking-fee.service';
+import { ParkingFeeRequest } from '../../models/parking-fee-request';
 
 @Component({
   selector: 'app-parking-fees',
@@ -26,6 +27,11 @@ export class ParkingFeesComponent implements OnInit {
 
   onAdd(){
     this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  onEdit(updateParkingFee: ParkingFeeRequest){
+    console.log(updateParkingFee.id);
+    this.router.navigate(['edit',updateParkingFee.id], {relativeTo: this.route});
   }
 
 }

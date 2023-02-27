@@ -54,24 +54,42 @@ export class ParkingFeeFormComponent implements OnInit {
     });
   }
 
-  public getErrorMessage(licensePlate: string){
-    const field = this.form.get(licensePlate);
+  public getErrorMessageFullHourPrice(fullHourPrice: string){
+    const field = this.form.get(fullHourPrice);
+    if(field?.hasError('required')){
+      return 'Campo obrigatorio';
+    }
+
+    return 'Campo inválido';
+  }
+
+  public getErrorMessageAdtionalHourPrice(aditionalHourPrice: string){
+    const field = this.form.get(aditionalHourPrice);
+    if(field?.hasError('required')){
+      return 'Campo obrigatorio';
+    }
+
+    return 'Campo inválido';
+
+  }
+
+  public getErrorMessageinitialValidityDate(initialValidityDate: string){
+    const field = this.form.get(initialValidityDate);
 
     if(field?.hasError('required')){
       return 'Campo obrigatorio';
     }
 
-    if(field?.hasError('pattern')){
-      return 'O Campo só pode possuir letras e numeros';
+    return 'Campo inválido';
+  }
+
+  public getErrorMessagefinalValidityDate(finalValidityDate: string){
+    const field = this.form.get(finalValidityDate);
+
+    if(field?.hasError('required')){
+      return 'Campo obrigatorio';
     }
-    if(field?.hasError('minlength')){
-      const requiredLength = field.errors ? field.errors['minlength']['requiredLength'] : 5;
-      return `Tamanho minimo precisa ser de ${requiredLength} caracteres`;
-    }
-    if(field?.hasError('maxlength')){
-      const requiredLength = field.errors ? field.errors['maxlength']['requiredLength'] : 100;
-      return `Tamanho máximo precisa ser de ${requiredLength} caracteres`;
-    }
+
     return 'Campo inválido';
   }
 
